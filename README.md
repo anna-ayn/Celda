@@ -10,3 +10,14 @@
 
 ## Detalles importantes de la implementación del proyecto
 
+### **cruzar**
+
+### **es_seguro**
+
+### **quitar_ultimo**
+
+### **atravesar**
+
+### **siempre_seguro**
+
+### **siempre_seguro_bifurcacion**
