@@ -60,3 +60,21 @@ atravesar(bifurcacion(Submapa1, Submapa2), Palancas, seguro):-
 atravesar(bifurcacion(Submapa1, Submapa2), Palancas, trampa):- 
     atravesar(Submapa1, Palancas, trampa),
     atravesar(Submapa2, Palancas, trampa).
+    
+/*Predicado para insertar en un string otro string en una posición especificada*/
+ string_insert(Str, Val, At, NewStr) :-
+    sub_string(Str, 0, At, A1, S1),
+    sub_string(Str, At, A1, _, S2),
+    atomics_to_string([S1,Val,S2], NewStr).   
+
+/*Predicado para leer por input el nombre del archivo donde se encuentra el mapa (el archivo debe terminar con un punto)*/
+/* (debe colocar en el predicado string_insert la extensión del archivo a leer)*/
+leer(Mapa):-
+    write("Introduza el nombre del archivo donde se encuentra su mapa: "),    read(Nombre),
+     string_length(Nombre,Length),
+     string_insert(Nombre,".txt",Length,Ubicacion),
+     atom_string(Atomubicacion,Ubicacion),
+     see(Atomubicacion),
+     read(X),
+     Mapa = X,
+     seen.
