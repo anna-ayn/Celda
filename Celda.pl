@@ -14,8 +14,9 @@ es_seguro(regular, abajo, trampa).
 /* predicado cruzar */
 
 cruzar(Mapa, Palancas, Seguro) :-
-    /* se llama a una funcion auxiliar: atravesar */
+    /* se llama al predicado: atravesar */
     atravesar(Mapa, Palancas, Seguro),
+    /* se eliminar el último elemento vacío de la lista de Palancas */
     quitar_ultimo(Palancas, Palancas).
 
 /* predicado atravesar */
@@ -28,6 +29,7 @@ atravesar(pasillo(X, Modo), Palancas, Seguro) :-
     es_seguro(Modo, Posicion, Seguro).
 
 /* Caso en que la Mapa o Submapa es una secuencia de dos submapas: junta(Submapa1, Submapa2) */
+/* El camino es seguro si ambas submapas son seguros, en caso contrario es trampa */
 atravesar(junta(Submapa1, Submapa2), Palancas, seguro):- 
     atravesar(Submapa1, Palancas, seguro),
     atravesar(Submapa2, Palancas, seguro).
@@ -45,6 +47,7 @@ atravesar(junta(Submapa1, Submapa2), Palancas, trampa):-
     atravesar(Submapa2, Palancas, seguro).
 
 /* Caso en que la Mapa o Submapa es una bifurcacion del camino de dos submapas: bifurcacion(Submapa1, Submapa2) */
+/* El camino es seguro si alguno de los submapas es seguro, en caso contrario es trampa */
 atravesar(bifurcacion(Submapa1, Submapa2), Palancas, seguro):- 
     atravesar(Submapa1, Palancas, seguro),
     atravesar(Submapa2, Palancas, seguro).
