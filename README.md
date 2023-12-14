@@ -15,8 +15,18 @@ Primero, debe cargar el Celda.pl para poder usar sus predicados. Para cargar un 
 ### **cruzar\3**
 
 ### **es_seguro\3**
+Este predicado toma 3 argumentos: modo del pasillo, posición de la palanca y si es seguro pasar o es trampa. Y con este predicado, se definen 4 hechos:
+a. Si el modo es regular y la palanca está hacia arriba, es seguro cruzar.
+es_seguro(regular, arriba, seguro).
+b. Si el modo está de_cabeza y la palanca está hacia abajo, es seguro cruzar.
+es_seguro(de_cabeza, abajo, seguro).
+c. Si el modo está de cabeza y la palanca está hacia arriba, entonces no es seguro cruzar.
+es_seguro(de_cabeza, arriba, trampa).
+d. Si el modo es regular y la palanca está hacia abajo, tampoco es seguro de cruzar.
+es_seguro(regular, abajo, trampa).
 
 ### **quitar_ultimo\2**
+Este predicado recibe una lista de entrada y devuelve la lista resultante luego de eliminar el último elemento.
 
 ### **atravesar\3**
 
