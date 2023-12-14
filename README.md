@@ -25,6 +25,7 @@ Primero, debe cargar el Celda.pl para poder usar sus predicados. Para cargar un 
 ### **siempre_seguro_bifurcacion\2**
 
 ### **string_insert\4**
+Este predicado toma Str un string (donde se realizara la insercion), Val otro string (lo que se insertará), At un numero donde se insertará el string y el string resultante NewStr. Primero, se llama al predicado sub_string para obtener el substring S1 de Str que va desde el primer caracter hasta el que se encuentra en At, luego se vuelve a llamar para conseguir el substring S2 que va desde At hasta el ultimo caracter de Str. Luego, utiliza el predicado atomics_to_string para llevar la concatenacion de S1 con Val y S2 a un string que se guardará en NewStr.
 
 ### **leer\1**
 Este predicado sirve para leer un mapa dentro de un archivo del usuario y unificarlo en la variable Mapa. Primero, le pide que introduzca el nombre del archivo donde se encuentra el mapa a utilizar, luego se lee esta respuesta con el predicado read. Luego se toma el la longitud del string y se inserta al final de este la extension del archivo. Luego, se utiliza el predicado atom_string para llevar este string resultante a un atomo ya que el predicado see solo funciona con atomos. Por ultimo, se llama a see con este atomo resultante, se unifica en Mapa y se cierra el input stream con el predicado seen. 
