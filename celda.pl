@@ -1,15 +1,16 @@
-/* quitar el ultimo elemento en una lista */
-quitar_ultimo([], []).
-quitar_ultimo([X|Xs], [X|Ys]) :- quitar_ultimo(Xs, Ys),!.
-
 /* Es seguro cruzar si: el modo del pasillo es regular y la palanca es arriba 
 o si el modo es de_cabeza y la palanca es abajo: */
 es_seguro(regular, arriba, seguro).
 es_seguro(de_cabeza, abajo, seguro).
+
 /* No se puede cruzar si: el modo del pasillo es regular y la palanca es abajo
 o si el modo es de_cabeza y la palanca es arriba: */
 es_seguro(de_cabeza, arriba, trampa).
 es_seguro(regular, abajo, trampa).
+
+/* quitar el ultimo elemento en una lista */
+quitar_ultimo([], []).
+quitar_ultimo([X|Xs], [X|Ys]) :- quitar_ultimo(Xs, Ys),!.
 
 /* predicado cruzar */
 
@@ -35,7 +36,7 @@ atravesar(junta(Submapa1, Submapa2), Palancas, seguro):-
     atravesar(Submapa2, Palancas, seguro).
 
 atravesar(junta(Submapa1, Submapa2), Palancas, trampa):- 
-    atravesar(Submapa1, Palancas, trampa),
+    atravesar(Submapa1, Palancas, trampa);
     atravesar(Submapa2, Palancas, trampa).
 
 atravesar(junta(Submapa1, Submapa2), Palancas, trampa):- 
@@ -68,23 +69,11 @@ atravesar(bifurcacion(Submapa1, Submapa2), Palancas, trampa):-
 /*Todos los caminos son seguros si no existe una configuración de palancas que sea trampa*/
 siempre_seguro(Mapa) :-
     not(cruzar(Mapa, _, trampa)).
-    
-/*Predicado para insertar en un string otro string en una posición especificada*/
- string_insert(Str, Val, At, NewStr) :-
-    sub_string(Str, 0, At, A1, S1),
-    sub_string(Str, At, A1, _, S2),
-    atomics_to_string([S1,Val,S2], NewStr).   
 
 /*Predicado para leer por input el nombre del archivo donde se encuentra el mapa (el archivo debe terminar con un punto)*/
-/*El path no debe incluir la extension del archivo*/
-/*(debe colocar en el predicado string_insert la extensión del archivo a leer)*/
 leer(Mapa):-
-    write("Introduza el nombre del archivo donde se encuentra su mapa: "),    
-     read(Nombre),
-     string_length(Nombre,Length),
-     string_insert(Nombre,".txt",Length,Ubicacion),
-     atom_string(Atomubicacion,Ubicacion),
-     see(Atomubicacion),
-     read(X),
-     Mapa = X,
-     seen.
+    write(user_output, "Introduza el nombre del archivo donde se encuentra su mapa: " ), flush_output(user_output),
+	read_string(user_input, "\n", " ", _End, NombreArchivo),
+	open(NombreArchivo, read, Stream), 
+	read(Stream, Mapa),
+	close(Stream).
