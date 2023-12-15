@@ -72,7 +72,7 @@ siempre_seguro(Mapa) :-
 
 /*Predicado para leer por input el nombre del archivo donde se encuentra el mapa (el archivo debe terminar con un punto)*/
 leer(Mapa):-
-    write(user_output, "Introduza el nombre del archivo donde se encuentra su mapa:\n" ), flush_output(user_output),
+    write(user_output, "Introduzca el nombre del archivo donde se encuentra su mapa:\n" ), flush_output(user_output),
 	read_string(user_input, "\n", " ", _End, NombreArchivo),
 	open(NombreArchivo, read, Stream), 
 	read(Stream, Mapa),

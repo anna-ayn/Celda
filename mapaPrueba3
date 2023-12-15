@@ -1,0 +1,13 @@
+junta(
+    junta(
+        bifurcacion(
+            pasillo(e, de_cabeza), 
+            pasillo(j, regular)
+        ), 
+        pasillo(g, de_cabeza)
+    ), 
+    bifurcacion(
+        pasillo(a, regular), 
+        pasillo(c, de_cabeza)
+    )
+).
