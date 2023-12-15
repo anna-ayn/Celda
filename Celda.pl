@@ -63,6 +63,21 @@ atravesar(bifurcacion(Submapa1, Submapa2), Palancas, seguro):-
 atravesar(bifurcacion(Submapa1, Submapa2), Palancas, trampa):- 
     atravesar(Submapa1, Palancas, trampa),
     atravesar(Submapa2, Palancas, trampa).
+
+siempre_seguro(pasillo(_, _)) :- false.
+
+siempre_seguro(junta(Submapa1, Submapa2)) :-
+    siempre_seguro(Submapa1),
+    siempre_seguro(Submapa2).
+
+siempre_seguro(bifurcacion(Submapa1, Submapa2)) :-
+    siempre_seguro_bifurcacion(Submapa1, Submapa2).
+
+siempre_seguro(bifurcacion(Submapa1, Submapa2)) :-
+    siempre_seguro_bifurcacion(Submapa2, Submapa1).
+
+siempre_seguro_bifurcacion(Submapa1, Submapa2) :-
+    cruzar(Submapa1, Palancas, trampa), cruzar(Submapa2, Palancas, seguro).
     
 /*Predicado para insertar en un string otro string en una posición especificada*/
  string_insert(Str, Val, At, NewStr) :-
