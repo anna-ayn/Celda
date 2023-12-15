@@ -64,20 +64,11 @@ atravesar(bifurcacion(Submapa1, Submapa2), Palancas, trampa):-
     atravesar(Submapa1, Palancas, trampa),
     atravesar(Submapa2, Palancas, trampa).
 
-siempre_seguro(pasillo(_, _)) :- false.
-
-siempre_seguro(junta(Submapa1, Submapa2)) :-
-    siempre_seguro(Submapa1),
-    siempre_seguro(Submapa2).
-
-siempre_seguro(bifurcacion(Submapa1, Submapa2)) :-
-    not(camino_no_seguro_bifurcacion(Submapa1, Submapa2)).
-
-siempre_seguro(bifurcacion(Submapa1, Submapa2)) :-
-    not(camino_no_seguro_bifurcacion(Submapa2, Submapa1)).
-
-camino_no_seguro_bifurcacion(Submapa1, Submapa2) :-
-    cruzar(Submapa1, Palancas, trampa), cruzar(Submapa2, Palancas, trampa).
+/*Predicdo para verificar si todos los caminos de un mapa son seguros*/
+/*Todos los caminos son seguros si no existe una configuración de palancas que sea trampa*/
+siempre_seguro(Mapa) :-
+    not(cruzar(Mapa, _, trampa)).
+    
     
 /*Predicado para insertar en un string otro string en una posición especificada*/
  string_insert(Str, Val, At, NewStr) :-
