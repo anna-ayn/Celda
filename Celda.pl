@@ -71,13 +71,13 @@ siempre_seguro(junta(Submapa1, Submapa2)) :-
     siempre_seguro(Submapa2).
 
 siempre_seguro(bifurcacion(Submapa1, Submapa2)) :-
-    siempre_seguro_bifurcacion(Submapa1, Submapa2).
+    not(camino_no_seguro_bifurcacion(Submapa1, Submapa2)).
 
 siempre_seguro(bifurcacion(Submapa1, Submapa2)) :-
-    siempre_seguro_bifurcacion(Submapa2, Submapa1).
+    not(camino_no_seguro_bifurcacion(Submapa2, Submapa1)).
 
-siempre_seguro_bifurcacion(Submapa1, Submapa2) :-
-    cruzar(Submapa1, Palancas, trampa), cruzar(Submapa2, Palancas, seguro).
+camino_no_seguro_bifurcacion(Submapa1, Submapa2) :-
+    cruzar(Submapa1, Palancas, trampa), cruzar(Submapa2, Palancas, trampa).
     
 /*Predicado para insertar en un string otro string en una posición especificada*/
  string_insert(Str, Val, At, NewStr) :-
