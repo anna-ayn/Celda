@@ -1,3 +1,7 @@
+/* quitar el ultimo elemento en una lista */
+quitar_ultimo([], []).
+quitar_ultimo([X|Xs], [X|Ys]) :- quitar_ultimo(Xs, Ys),!.
+
 /* Es seguro cruzar si: el modo del pasillo es regular y la palanca es arriba 
 o si el modo es de_cabeza y la palanca es abajo: */
 es_seguro(regular, arriba, seguro).
@@ -7,10 +11,6 @@ es_seguro(de_cabeza, abajo, seguro).
 o si el modo es de_cabeza y la palanca es arriba: */
 es_seguro(de_cabeza, arriba, trampa).
 es_seguro(regular, abajo, trampa).
-
-/* quitar el ultimo elemento en una lista */
-quitar_ultimo([], []).
-quitar_ultimo([X|Xs], [X|Ys]) :- quitar_ultimo(Xs, Ys),!.
 
 /* predicado cruzar */
 
@@ -36,7 +36,7 @@ atravesar(junta(Submapa1, Submapa2), Palancas, seguro):-
     atravesar(Submapa2, Palancas, seguro).
 
 atravesar(junta(Submapa1, Submapa2), Palancas, trampa):- 
-    atravesar(Submapa1, Palancas, trampa);
+    atravesar(Submapa1, Palancas, trampa),
     atravesar(Submapa2, Palancas, trampa).
 
 atravesar(junta(Submapa1, Submapa2), Palancas, trampa):- 
