@@ -1,0 +1,7 @@
+junta(
+    pasillo(a, de_cabeza),
+    bifurcacion(
+        pasillo(a, de_cabeza),
+        pasillo(a, de_cabeza)
+    )
+).
