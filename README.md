@@ -32,8 +32,7 @@ Predicado que recibe los mismos 3 argumentos que `cruzar\3` y se define con vari
 3. El tercer caso `atravesar(bifurcacion(Submapa1, Submapa2), Palancas, Seguro)`: Si el mapa es una bifurcación de dos submapas. Comprueba si es seguro cruzar ambos submapas dada la lista de palancas y el modo de seguridad. Hay cuatro combinaciones diferentes de modos de seguridad para los dos submapas: es seguro si ambos son seguros, es trampa si ambos son trampas, es seguro si el primero es seguro y el segundo es una trampa, y viceversa.
 
 ### **siempre_seguro\1**
-
-### **siempre_seguro_bifurcacion\2**
+El predicado recibe un mapa y verifica que sea seguro consiguiendo configuraciones de palancas que cumplan que el mapa no es seguro de cruzar, mediante `cruzar(Mapa, _, trampa)`, luego, si existe una configuración de Palancas así, entonces el programa no es seguro, por lo tanto mediante un not podemos verificar si existen configuraciones de palancas que hagan al mapa no seguro, `not(cruzar(Mapa, _, trampa))`.
 
 ### **string_insert\4**
 Este predicado toma Str un string (donde se realizara la insercion), Val otro string (lo que se insertará), At un numero donde se insertará el string y el string resultante NewStr. Primero, se llama al predicado sub_string para obtener el substring S1 de Str que va desde el primer caracter hasta el que se encuentra en At, luego se vuelve a llamar para conseguir el substring S2 que va desde At hasta el ultimo caracter de Str. Luego, utiliza el predicado atomics_to_string para llevar la concatenacion de S1 con Val y S2 a un string que se guardará en NewStr.
