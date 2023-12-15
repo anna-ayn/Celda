@@ -69,7 +69,6 @@ atravesar(bifurcacion(Submapa1, Submapa2), Palancas, trampa):-
 siempre_seguro(Mapa) :-
     not(cruzar(Mapa, _, trampa)).
     
-    
 /*Predicado para insertar en un string otro string en una posición especificada*/
  string_insert(Str, Val, At, NewStr) :-
     sub_string(Str, 0, At, A1, S1),
