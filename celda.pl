@@ -80,7 +80,7 @@ siempre_seguro(Mapa) :-
 /*El path no debe incluir la extension del archivo*/
 /*(debe colocar en el predicado string_insert la extensión del archivo a leer)*/
 leer(Mapa):-
-    write("Introduza la ubicacion del archivo donde se encuentra su mapa: "),    
+    write("Introduza el nombre del archivo donde se encuentra su mapa: "),    
      read(Nombre),
      string_length(Nombre,Length),
      string_insert(Nombre,".txt",Length,Ubicacion),
